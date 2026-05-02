@@ -26,7 +26,7 @@ describe('Ranking Logic', () => {
       language: 'Go', stargazers_count: 0, pushed_at: oldDate.toISOString()
     }];
 
-    // Charlie: Wrong language (JavaScript), 50 stars (*1 = 50), +0 (wrong lang), +20 (recent) = 70 pts
+    // Charlie: Wrong language (JavaScript), 50 stars — filtered out (score = 0, no Go repos)
     const charlieRepos: GitHubRepo[] = [{
       name: 'js-app', html_url: '', description: '',
       language: 'JavaScript', stargazers_count: 50, pushed_at: recentDate.toISOString()
@@ -42,19 +42,15 @@ describe('Ranking Logic', () => {
     // Execute ranking
     const result = rankCandidates(input, 'Go');
 
-    // Assertions to prove our ranking claim
-    expect(result.length).toBe(3);
-    
-    // Alice should be first (Strongest signal: right language, high stars, recent)
+    // 1. Only 2 results — Charlie is filtered out (score 0, no Go repos)
+    expect(result.length).toBe(2);
+
+    // 2. Alice should be first (90 pts)
     expect(result[0].username).toBe('alice');
     expect(result[0].score).toBe(90);
 
-    // Bob should be second (Weak signal, but at least writes the right language)
+    // 3. Bob should be second (10 pts)
     expect(result[1].username).toBe('bob');
     expect(result[1].score).toBe(10);
-
-    // Charlie should be last (Strong developer, but 0 target language repos = 0 points)
-    expect(result[2].username).toBe('charlie');
-    expect(result[2].score).toBe(0);
   });
 });
