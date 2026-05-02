@@ -1,6 +1,5 @@
-// __tests__/ranking.test.ts
-import { rankCandidates } from '../src/ranking';
-import { GitHubUser, GitHubRepo } from '../src/types';
+import { rankCandidates } from '../src/ranking.js';
+import { GitHubUser, GitHubRepo } from '../src/types.js';
 
 describe('Ranking Logic', () => {
   it('correctly ranks candidates based on language matches, stars, and recency', () => {

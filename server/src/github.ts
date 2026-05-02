@@ -1,6 +1,6 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
-import { GitHubSearchResponse, GitHubRepo, GitHubUser } from './types';
+import { GitHubSearchResponse, GitHubRepo, GitHubUser } from './types.js';
 
 dotenv.config();
 

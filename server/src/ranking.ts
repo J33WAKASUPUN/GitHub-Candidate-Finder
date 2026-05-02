@@ -1,5 +1,4 @@
-// server/src/ranking.ts
-import { GitHubUser, GitHubRepo, RankedCandidate } from './types';
+import { GitHubUser, GitHubRepo, RankedCandidate } from './types.js';
 
 /**
  * Takes an array of users and their repos, evaluates them, and returns a sorted ranking.
