@@ -11,8 +11,11 @@ export function rankCandidates(
     evaluateCandidate(user, repos, targetLanguage)
   );
 
-  // Sort descending: highest score first
-  return ranked.sort((a, b) => b.score - a.score);
+  // Filter out users who scored 0.
+  // then sort descending by score.
+  return ranked
+    .filter(candidate => candidate.score > 0) 
+    .sort((a, b) => b.score - a.score);
 }
 
 /**
