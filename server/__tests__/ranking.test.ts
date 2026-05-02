@@ -22,8 +22,8 @@ describe('Ranking Logic', () => {
 
     // Bob: Target language (Go), 0 stars, +10 (lang match), +0 (old) = 10 pts
     const bobRepos: GitHubRepo[] = [{
-      name: 'ts-old', html_url: '', description: '',
-      language: 'TypeScript', stargazers_count: 0, pushed_at: oldDate.toISOString()
+      name: 'go-old', html_url: '', description: '',
+      language: 'Go', stargazers_count: 0, pushed_at: oldDate.toISOString()
     }];
 
     // Charlie: Wrong language (JavaScript), 50 stars (*1 = 50), +0 (wrong lang), +20 (recent) = 70 pts

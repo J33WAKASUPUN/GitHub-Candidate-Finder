@@ -81,8 +81,9 @@ function evaluateCandidate(
     username: user.login,
     github_url: user.html_url,
     score,
-    reasoning,
+    target_repo_count: targetLangRepoCount,
     top_language_stars: targetLanguageStars,
+    reasoning,
     last_active: mostRecentPush ? mostRecentPush.toISOString() : null,
   };
 }

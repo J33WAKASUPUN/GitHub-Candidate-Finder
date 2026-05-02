@@ -3,6 +3,7 @@ export interface FindCandidatesArgs {
   location: string;
   language: string;
   limit?: number;
+}
 
 // GitHub API Response: User Search
 export interface GitHubUser {
@@ -30,6 +31,7 @@ export interface RankedCandidate {
   username: string;
   github_url: string;
   score: number;
+  target_repo_count: number;
   reasoning: string;
   top_language_stars: number;
   last_active: string | null;
