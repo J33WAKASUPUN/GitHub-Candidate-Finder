@@ -39,7 +39,7 @@ An MCP (Model Context Protocol) server designed to help AI agents (like Claude o
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/J33WAKASUPUN/GitHub-Candidate-Finder.git
 cd server
 
 # Install dependencies
@@ -51,7 +51,7 @@ npm install
 Create a `.env` file in the root directory:
 
 ```plaintext
-GITHUB_TOKEN=your_github_pat_here
+GITHUB_TOKEN=your_github_personal_access_token_here
 ```
 
 ### Running the Server
