@@ -1,4 +1,3 @@
-// server/src/index.ts
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -23,7 +22,7 @@ const server = new Server(
   }
 );
 
-// 1. Define the Tool Schema for the AI Agent
+// Define the Tool Schema for the AI Agent
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
@@ -53,13 +52,12 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   };
 });
 
-// 2. Execute the Tool Logic
+// Execute the Tool Logic
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   if (request.params.name !== "find_engineering_candidates") {
     throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${request.params.name}`);
   }
 
-  // Type cast the arguments
   const args = request.params.arguments as { location: string; language: string; limit?: number };
   const location = args.location;
   const language = args.language;
@@ -67,7 +65,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const limit = Math.min(args.limit || 5, 10); 
 
   try {
-    // Step 1: Search for top 'N' users
+    // Search for top users
     const users = await searchGitHubUsers(location, language, limit);
 
     if (users.length === 0) {
@@ -76,7 +74,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       };
     }
 
-    // Step 2: Fetch repos for these specific users concurrently
+    // Fetch repos for these specific users concurrently
     const candidatesWithRepos = await Promise.all(
       users.map(async (user) => {
         const repos = await getUserRepos(user.login);
@@ -84,10 +82,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       })
     );
 
-    // Step 3: Rank them using our scoring engine
+    // Rank them using our scoring engine
     const rankedCandidates = rankCandidates(candidatesWithRepos, language);
 
-    // Step 4: Return formatted JSON to the AI Agent
+    // Return formatted JSON to the AI Agent
     return {
       content: [
         {
@@ -102,7 +100,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   }
 });
 
-// 3. Start the Server over standard input/output
+// Start the Server over standard input/output
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);

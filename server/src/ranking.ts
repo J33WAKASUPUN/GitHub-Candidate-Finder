@@ -16,7 +16,7 @@ export function rankCandidates(
 }
 
 /**
- * The core logic: Defines what "strong" and "recent" mean mathematically.
+ * Defines what "strong" and "recent" mean mathematically.
  */
 function evaluateCandidate(
   user: GitHubUser,
@@ -63,6 +63,10 @@ function evaluateCandidate(
   if (daysSinceLastPush !== null && daysSinceLastPush <= 90) {
     // Big bonus if they shipped code in the last 3 months
     score += 20; 
+  }
+
+  if (targetLangRepoCount === 0) {
+    score = 0; 
   }
 
   // Generate a human-readable reasoning string for the AI agent
