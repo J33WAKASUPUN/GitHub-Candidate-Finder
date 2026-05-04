@@ -19,11 +19,11 @@ An MCP (Model Context Protocol) server designed to help AI agents (like Claude o
 ## 📸 Technical Preview
 
 ### MCP Inspector Tool Definition
-![MCP Inspector Tools Interface](https://github.com/J33WAKASUPUN/GitHub-Candidate-Finder/blob/main/server/screenshots/screenshot-1.jpg)
+![MCP Inspector Tools Interface](https://github.com/J33WAKASUPUN/GitHub-Candidate-Finder/blob/main/screenshots/screenshot-1.jpg)
 *Defining the `find_engineering_candidates` tool with strict input schemas for location, language, and evaluation limits.*
 
 ### Live Tool Execution & Result Shaping
-![MCP Inspector Execution Results](https://github.com/J33WAKASUPUN/GitHub-Candidate-Finder/blob/main/server/screenshots/screenshot-2.jpg)
+![MCP Inspector Execution Results](https://github.com/J33WAKASUPUN/GitHub-Candidate-Finder/blob/main/screenshots/screenshot-2.jpg)
 *The server executing a live search for TypeScript engineers in Sri Lanka, returning ranked and scored results.*
 
 ---
